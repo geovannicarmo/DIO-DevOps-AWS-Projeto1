@@ -1,0 +1,30 @@
+#!/bin/bash
+
+mkdir /publico /adm /ven /sec
+
+groupadd "GRP_ADM"
+groupadd "GRP_VEN"
+groupadd "GRP_SEC"
+
+useradd carlos -m -c "carlos da silva" -s /bin/bash -e -p $(openssl passwd -crypt senha123) -G GRP_ADM
+useradd maria -m -c "maria tereza" -s /bin/bash -e -p $(openssl passwd -crypt senha123) -G GRP_ADM
+useradd joao -m -c "joao silva" -s /bin/bash -e -p $(openssl passwd -crypt senha123) -G GRP_ADM
+
+useradd debora -m -c "debora da silva" -s /bin/bash -e -p $(openssl passwd -crypt senha123) -G GRP_VEN
+useradd sebatiana -m -c "sebastiana tereza" -s /bin/bash -e -p $(openssl passwd -crypt senha123) -G GRP_VEN
+useradd roberto -m -c "roberto silva" -s /bin/bash -e -p $(openssl passwd -crypt senha123) -G GRP_VEN
+
+useradd josefina -m -c "josefina da silva" -s /bin/bash -e -p $(openssl passwd -crypt senha123) -G GRP_SEC
+useradd amanda -m -c "amanda tereza" -s /bin/bash -e -p $(openssl passwd -crypt senha123) -G GRP_SEC
+useradd rogerio -m -c "rogerio silva" -s /bin/bash -e -p $(openssl passwd -crypt senha123) -G GRP_SEC
+
+chown root:GRP_SEC /sec
+chown root:GRP_VEN /ven
+chown root:GRP_ADM /adm
+
+chmod 777 /publico
+chmod 770 /sec
+chmod 770 /ven
+chmod 770 /adm
+
+echo "Estrutura criada com sicesso"
